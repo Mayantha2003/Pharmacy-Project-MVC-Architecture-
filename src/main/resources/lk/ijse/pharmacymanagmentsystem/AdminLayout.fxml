@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E3FDFD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pharmacymanagmentsystem.controller.AdminLayoutController">
+
+    <children>
+        <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E3FDFD;">
+            <children>
+                <!-- Sidebar -->
+                <VBox alignment="TOP_CENTER" layoutY="11.2" maxHeight="Infinity" prefHeight="778.0" prefWidth="227.0" style="-fx-background-color: #71C9CE; -fx-background-radius: 15;" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="11.0">
+                    <padding>
+                        <Insets bottom="15" left="15" right="15" top="15" />
+                    </padding>
+
+                    <children>
+                  <Label fx:id="lblDate" text="Date">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTime" text="Time">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                        <!-- Logo & Title -->
+                        <ImageView fitHeight="55.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../image/pharmacy.png" />
+                            </image>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="60.0" right="60.0" top="25.0" />
+                            </VBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" style="-fx-font-weight: bold; -fx-text-fill: #1a1a1a;" text="Pharmacy">
+                            <font>
+                                <Font size="26" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="30.0" right="25.0" />
+                            </VBox.margin>
+                        </Label>
+
+                        <!-- Buttons with fx:id + onAction="#navigate" -->
+                        <Button fx:id="btnDashboard" blendMode="MULTIPLY" onAction="#clickDashboradNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Dashboard">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+                  <Button fx:id="btnProduct" blendMode="MULTIPLY" onAction="#clickProductNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Product Management">
+                     <font>
+                        <Font name="System Bold" size="15" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Button>
+
+                        <Button fx:id="btnGRN" blendMode="MULTIPLY" onAction="#clickGRNNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="GRN">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+
+                        <Button fx:id="btnInvoice" blendMode="MULTIPLY" onAction="#clickInvoiceNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Invoice">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+                  <Button fx:id="btnCategorie" blendMode="MULTIPLY" onAction="#clickCategorieNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Categorie Management">
+                     <font>
+                        <Font name="System Bold" size="15" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Button>
+
+                        <Button fx:id="btnSupplier" blendMode="MULTIPLY" onAction="#clickSupplierNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Supplier Management">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+
+                        <Button fx:id="btnCustomer" blendMode="MULTIPLY" onAction="#clickCustomerNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="Customer Management">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+
+                        <Button fx:id="btnUser" blendMode="MULTIPLY" onAction="#clickUserNav" prefHeight="40.0" prefWidth="198.0" style="-fx-font-weight: bold; -fx-background-radius: 8;" text="User Management">
+                            <font>
+                                <Font name="System Bold" size="15" />
+                            </font>
+                        </Button>
+
+                        <Region VBox.vgrow="ALWAYS" />
+
+                        <!-- Logout Button -->
+                        <Button fx:id="logoutButton" onAction="#btnLogoutOnAction" prefHeight="40.0" prefWidth="198.0" style="-fx-background-color: red; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: bold;" text="Logout">
+                            <font>
+                                <Font name="System Bold" size="13" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="10" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+
+                <!-- Main Content -->
+                <StackPane fx:id="main_Form" style="-fx-background-radius: 12; -fx-background-color: #E3FDFD;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

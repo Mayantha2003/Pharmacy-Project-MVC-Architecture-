@@ -1,0 +1,126 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Low_Stock" language="java" columnCount="1" pageWidth="420" pageHeight="595" orientation="Landscape" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01621804-29b8-4007-9b22-46e8da77bde4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL database"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<query language="SQL"><![CDATA[SELECT 
+    p.code AS item_code, 
+    p.name AS medicine_name, 
+    p.generic_name, 
+    c.name AS category, 
+    p.company, 
+    s.supplier_name, 
+    SUM(b.qty_remaining) AS total_qty
+FROM Products p
+JOIN Batches b ON p.product_id = b.product_id
+JOIN Categories c ON p.cat_id = c.cat_id
+JOIN Suppliers s ON b.supplier_id = s.supplier_id
+GROUP BY p.product_id, p.code, p.name, p.generic_name, c.name, p.company, s.supplier_name
+HAVING total_qty <= 10
+ORDER BY total_qty ASC]]></query>
+	<field name="item_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="code"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Products"/>
+	</field>
+	<field name="medicine_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="medicine_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Products"/>
+	</field>
+	<field name="generic_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="generic_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="generic_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Products"/>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Categories"/>
+	</field>
+	<field name="company" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="company"/>
+		<property name="com.jaspersoft.studio.field.label" value="company"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Products"/>
+	</field>
+	<field name="supplier_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="supplier_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="supplier_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Suppliers"/>
+	</field>
+	<field name="total_qty" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_qty"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="99" splitType="Stretch">
+		<element kind="staticText" uuid="ad8c4679-2140-4af4-9919-e678831f8e4f" x="0" y="0" width="380" height="60" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Low Stock Report]]></text>
+		</element>
+		<element kind="staticText" uuid="f6e0edec-3a07-4496-9e06-dd204c41144b" x="0" y="60" width="30" height="20" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Date:]]></text>
+			<box rightPadding="4"/>
+		</element>
+		<element kind="staticText" uuid="395b12ec-54f2-48f1-93a1-eb86d5dbadc4" x="240" y="60" width="40" height="20" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Time:]]></text>
+			<box rightPadding="4"/>
+		</element>
+		<element kind="textField" uuid="49d5866e-c208-4adc-81cc-576151fd4089" x="280" y="60" width="100" height="20" pattern="HH:mm" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="5b9aac17-c6d2-44e3-96a9-9b3e9fb34f31" x="30" y="60" width="90" height="20" pattern="EEEEE dd MMMMM yyyy" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="line" uuid="a9156a00-4acb-487b-bfca-4b0336b73e61" x="0" y="90" width="380" height="1"/>
+	</title>
+	<columnHeader height="29" splitType="Stretch">
+		<element kind="staticText" uuid="41061239-9cb4-465b-9ba5-a088dce063f0" x="0" y="3" width="50" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Item Code]]></text>
+		</element>
+		<element kind="staticText" uuid="d3f79eaa-5100-42c4-bdbd-4ec95e45d663" x="50" y="3" width="60" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Medicine Name]]></text>
+		</element>
+		<element kind="staticText" uuid="917d9475-d443-47ab-8b94-6b41a98d60c1" x="180" y="3" width="80" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Category]]></text>
+		</element>
+		<element kind="staticText" uuid="1f910e24-3e4d-4875-8db8-bcb723661f69" x="110" y="3" width="70" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Generic Name]]></text>
+		</element>
+		<element kind="staticText" uuid="14296572-1e2a-41f4-93a9-25c9652cde64" x="260" y="3" width="60" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Remaining Qty]]></text>
+		</element>
+		<element kind="staticText" uuid="22298339-294c-4f2a-871c-643e3e0f2817" x="320" y="3" width="60" height="20" bold="true" hTextAlign="Center">
+			<text><![CDATA[Supplier Name]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<element kind="textField" uuid="fa6bd66d-6ebf-484f-b850-527d7a823a43" x="0" y="0" width="50" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{item_code}]]></expression>
+			</element>
+			<element kind="textField" uuid="f5148c9a-9c79-455e-ab71-8a1a7bef4b3c" x="50" y="0" width="60" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{medicine_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="376f2bc5-43e4-4062-b06b-70526fec0b81" x="110" y="0" width="70" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{generic_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="c5ab49dd-c7e6-4a94-bf16-cafc48180946" x="180" y="0" width="80" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{category}]]></expression>
+			</element>
+			<element kind="textField" uuid="942e2e30-bb85-4da6-97ca-6ab8f9fa0563" x="260" y="0" width="60" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{total_qty}]]></expression>
+			</element>
+			<element kind="textField" uuid="60c8fd8f-6e18-4323-91b7-f6e9acda4bba" x="320" y="0" width="60" height="20" hTextAlign="Center">
+				<expression><![CDATA[$F{supplier_name}]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>
