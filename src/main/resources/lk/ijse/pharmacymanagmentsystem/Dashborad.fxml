@@ -161,7 +161,6 @@
                                         <NumberAxis side="LEFT" />
                                     </yAxis>
                                 </AreaChart>
-                        
                             </children>
                         </VBox>
                     </children>
